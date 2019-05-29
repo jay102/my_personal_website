@@ -16,10 +16,30 @@ class Resume extends Component {
           <p>{work.description}</p>
         </div>
       })
-      var skills = this.props.data.skills.map(function (skills) {
-        var className = 'bar-expand ' + skills.name.toLowerCase();
-        return <li key={skills.name}><span style={{ width: skills.level }} className={className}></span><em>{skills.name}</em></li>
-      })
+      // var skills = this.props.data.skills.map(function (skills) {
+      //   var className = 'bar-expand ' + skills.name.toLowerCase();
+      //   return <li key={skills.name}><span style={{ width: skills.level }} className={className}></span><em>{skills.name}</em></li>
+      // })
+      var languages = this.props.data.languages.map(languages => {
+        return (
+          <div class="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }}>
+            <img className="card-img-top" src={languages.image} alt={languages.img_description} style={{ height: "100px", width: "100px" }} />
+            <div className="card-body">
+              <h5 className="card-title" style={{ textAlign: "center" }}>{languages.name}</h5>
+            </div>
+          </div>
+        );
+      });
+      var tools = this.props.data.tools.map(tools => {
+        return (
+          <div class="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }}>
+            <img className="card-img-top" src={tools.image} alt={tools.img_description} style={{ height: "100px", width: "100px" }} />
+            <div className="card-body">
+              <h5 className="card-title" style={{ textAlign: "center" }}>{tools.name}</h5>
+            </div>
+          </div>
+        );
+      });
     }
 
     return (
@@ -56,19 +76,27 @@ class Resume extends Component {
         <div className="row skill">
 
           <div className="three columns header-col">
-            <h1><span>Skills</span></h1>
+            <h1><span>Favourites</span></h1>
           </div>
 
           <div className="nine columns main-col">
 
             <p>{skillmessage}
             </p>
-
             <div className="bars">
               <ul className="skills">
-                {skills}
               </ul>
             </div>
+          </div>
+          <div className="two columns header-col">
+          </div>
+          <div className="ten columns main-col tools-flex-container">
+            {languages}
+          </div>
+          <div className="two columns header-col">
+          </div>
+          <div className="ten columns main-col tools-flex-container">
+            {tools}
           </div>
         </div>
       </section>

@@ -207,9 +207,9 @@ ul#nav li.current a { color: #F06000; }
 }
 #about .profile-pic {
    position: relative;
-   width: 120px;
-   height: 120px;
-   border-radius: 5%;
+   width: 150px;
+   height: 150px;
+   border-radius: 25%;
 }
 #about .contact-details { width: 41.66667%; }
 #about .download {
@@ -1009,3 +1009,17 @@ footer .social-links li:first-child { margin-left: 0; }
  	border-radius: 100%;
 }
 #go-top a:hover { background-color: #0F9095; }
+
+.tools-flex-container{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: center;
+}
+
+#resume .row-skill .tools-flex-container .card .resume-image {
+   position: relative;
+   width: 150px;
+   height: 150px;
+   border-radius: 25%;
+}
