@@ -28,7 +28,7 @@ class About extends Component {
           <div className="nine columns main-col">
             <h2>About Me</h2>
 
-            <p>{bio}</p>
+            <p style={{ textAlign: "justify" }}>{bio}</p>
             <div className="row">
               <div className="columns download">
                 <p>

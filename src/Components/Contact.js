@@ -1,6 +1,63 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class Contact extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         contactName: "",
+         contactEmail: "",
+         contactSubject: "",
+         contactMessage: "",
+         success: false,
+         error: false
+      }
+   }
+   handleChange = e => {
+      const name = e.target.name;
+      this.setState({
+         [name]: e.target.value
+      })
+   }
+   handleSubmit = e => {
+      e.preventDefault();
+      document.getElementById('img').style.display = "inline-flex"
+      this.sendMail()
+   }
+   sendMail = () => {
+      let data = {
+         subject: this.state.contactSubject,
+         name: this.state.contactName,
+         email: this.state.contactEmail,
+         message: this.state.contactMessage
+      }
+      axios.post('http://jay.jaycodes.com/sendMail', data)
+         .then(response => {
+            console.log(response.data)
+            if (response.Error) {
+               console.log(response.Error)
+               document.getElementById('error').style.display = "block"
+               this.setState({ error: !this.state.error })
+            } else {
+               console.log("sent")
+               document.getElementById('img').style.display = "none"
+               document.getElementById('success').style.display = "block"
+               this.setState(prevState => ({
+                  contactName: "",
+                  contactEmail: "",
+                  contactSubject: "",
+                  contactMessage: "",
+                  success: !this.state.success
+               }))
+            }
+         })
+         .catch(err => {
+            if (err.response) {
+               console.log(err.response)
+            }
+         })
+   }
+
    render() {
 
       if (this.props.data) {
@@ -36,41 +93,41 @@ class Contact extends Component {
             <div className="row">
                <div className="eight columns">
 
-                  <form action="" method="post" id="contactForm" name="contactForm">
+                  <form onSubmit={(e) => this.handleSubmit(e)}>
                      <fieldset>
-
                         <div>
                            <label htmlFor="contactName">Name <span className="required">*</span></label>
-                           <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange} />
+                           <input type="text" size="35" id="contactName" name="contactName" onChange={this.handleChange} value={this.state.contactName} />
                         </div>
 
                         <div>
                            <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                           <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange} />/>
+                           <input type="text" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange} value={this.state.contactEmail} />/>
                   </div>
 
                         <div>
                            <label htmlFor="contactSubject">Subject</label>
-                           <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange} />/>
+                           <input type="text" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange} value={this.state.contactSubject} />/>
                   </div>
 
                         <div>
                            <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                           <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                           <textarea cols="50" rows="15" id="contactMessage" name="contactMessage" onChange={this.handleChange} value={this.state.contactMessage}></textarea>
                         </div>
 
                         <div>
                            <button className="submit">Submit</button>
-                           <span id="image-loader">
+                           <span id="img" style={{ display: "none", marginLeft: "1.2rem" }}>
                               <img alt="" src="images/loader.gif" />
                            </span>
                         </div>
                      </fieldset>
                   </form>
-
-                  <div id="message-warning"> Error boy</div>
-                  <div id="message-success">
-                     <i className="fa fa-check"></i>Your message was sent, thank you!<br />
+                  <div id="success" className="alert alert-success" role="alert" style={{ textAlign: "center", color: "green", display: "none" }}><i className="fa fa-check"></i>
+                     Your message was sent, thank you!
+                  </div>
+                  <div id="error" className="alert alert-danger" role="alert" style={{ textAlign: "center", color: "red", display: "none" }}>
+                     An error occured!
                   </div>
                </div>
 

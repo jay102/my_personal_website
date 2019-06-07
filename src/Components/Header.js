@@ -61,7 +61,7 @@ class Header extends Component {
               </a>
             </li>
             <li>
-              <a>
+              <a href="https://blog.jaycodes.com">
                 Blog
               </a>
             </li>

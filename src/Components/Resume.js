@@ -8,21 +8,18 @@ class Resume extends Component {
       var education = this.props.data.education.map(function (education) {
         return <div key={education.school}><h3>{education.school}</h3>
           <p className="info">{education.degree} <span>&bull;</span><em className="date">{education.graduated}</em></p>
-          <p>{education.description}</p></div>
+          <p style={{ textAlign: "justify" }}>{education.description}</p></div>
       })
       var work = this.props.data.work.map(function (work) {
         return <div key={work.title}><h3>{work.company}</h3>
           <p className="info">{work.title}<span>&bull;</span> <em className="date">{work.years}</em></p>
-          <p>{work.description}</p>
+          <p style={{ textAlign: "justify" }}>{work.description}</p>
         </div>
       })
-      // var skills = this.props.data.skills.map(function (skills) {
-      //   var className = 'bar-expand ' + skills.name.toLowerCase();
-      //   return <li key={skills.name}><span style={{ width: skills.level }} className={className}></span><em>{skills.name}</em></li>
-      // })
+
       var languages = this.props.data.languages.map(languages => {
         return (
-          <div class="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }}>
+          <div className="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }} key={languages.name}>
             <img className="card-img-top" src={languages.image} alt={languages.img_description} style={{ height: "100px", width: "100px" }} />
             <div className="card-body">
               <h5 className="card-title" style={{ textAlign: "center" }}>{languages.name}</h5>
@@ -32,7 +29,7 @@ class Resume extends Component {
       });
       var tools = this.props.data.tools.map(tools => {
         return (
-          <div class="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }}>
+          <div className="card" style={{ width: "10rem", marginRight: "20px", marginLeft: "20px" }} key={tools.name}>
             <img className="card-img-top" src={tools.image} alt={tools.img_description} style={{ height: "100px", width: "100px" }} />
             <div className="card-body">
               <h5 className="card-title" style={{ textAlign: "center" }}>{tools.name}</h5>
