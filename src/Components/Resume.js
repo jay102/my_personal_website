@@ -78,7 +78,7 @@ class Resume extends Component {
 
           <div className="nine columns main-col">
 
-            <p>{skillmessage}
+            <p style={{ textAlign: "justify" }}>{skillmessage}
             </p>
             <div className="bars">
               <ul className="skills">

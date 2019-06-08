@@ -97,7 +97,7 @@ class Contact extends Component {
                      <fieldset>
                         <div>
                            <label htmlFor="contactName">Name <span className="required">*</span></label>
-                           <input type="text" size="35" id="contactName" name="contactName" onChange={this.handleChange} value={this.state.contactName} />
+                           <input type="text" size="35" id="contactName" name="contactName" onChange={this.handleChange} value={this.state.contactName} />/>
                         </div>
 
                         <div>

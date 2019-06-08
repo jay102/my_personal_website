@@ -21,8 +21,8 @@ class Footer extends Component {
             <ul className="social-links">{networks}</ul>
 
             <ul className="copyright">
-              <li>&copy; Copyright 2019 Ikwechegh James</li>
-              <li>Design by Jaycode</li>
+              <li>&copy; Copyright 2019 Jaycode</li>
+              <li>HTML by <a href="https://www.styleshout.com">styleshout</a></li>
             </ul>
           </div>
           <div id="go-top">
